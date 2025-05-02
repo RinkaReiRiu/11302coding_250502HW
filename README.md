@@ -48,3 +48,15 @@ By following these steps, the camera feed appears mirrored without affecting oth
 
 ---
 
+
+# Divide Picture to lot of Shapes
+
+## Key Adjustments
+- **Loops** (`for` loops) divide the camera feed into grid segments.
+- `capture.get(i, j, gridSize, gridSize)` extracts a portion of the image.
+- **Rounded rectangles** (`rect(i, j, gridSize, gridSize, 15)`) display each section with smooth edges.
+
+---
+
+
+#
