@@ -4,38 +4,7 @@ Magic Fusion Camera
 ---
 
 
-## Show view of the camera
-
-> Create window-sized canvas in #170033 in a p5.js program.
-> Capture view of the camera, show it at the center, size 80% of the window.
-
-Here's a p5.js sketch that creates a full-window canvas with a deep purple background (#170033). It also captures the camera feed and displays it at the center, scaled to 80% of the window size.
-
-![image](https://hackmd.io/_uploads/ryEJVobglg.png)
-
-```javascript=
-let capture;
-
-function setup() {
-  createCanvas(windowWidth, windowHeight); // Full window canvas
-  capture = createCapture(VIDEO);
-  capture.size(windowWidth * 0.8, windowHeight * 0.8); // Scale to 80% of window
-  capture.hide(); // Hide default HTML element
-}
-
-function draw() {
-  background('#170033'); // Refresh background each frame
-
-  // Position camera feed at the center and update continuously
-  let x = (width - capture.width) / 2;
-  let y = (height - capture.height) / 2;
-  image(capture, x, y, capture.width, capture.height); // Keep updating
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight); // Ensure canvas resizes dynamically
-}
-```
+# Show view of the camera
 
 ## Canvas & Drawing
 - **`createCanvas(width, height)`**: Creates a drawing surface of the specified width and height.
@@ -61,5 +30,21 @@ function windowResized() {
 ---
 
 
-## 
+# Explanation of the Horizontal Flip
+
+## Key Concepts:
+- **`push()` and `pop()`**: These functions help preserve the drawing state. Any transformations (such as scaling and translation) applied between them will not affect other parts of the sketch.
+- **`translate(x + capture.width, y)`**: Moves the origin to the right edge of the image before flipping. This ensures that when we apply the scale transformation, the image flips properly.
+- **`scale(-1, 1)`**: Flips the image horizontally by scaling the x-axis by `-1`.
+
+## Transformation Steps:
+1. **Push the drawing state** (`push()`) to isolate the transformations.
+2. **Translate** the canvas so that the image is positioned correctly before the flip.
+3. **Apply the scale transformation** to flip the image left and right.
+4. **Draw the mirrored image** using `image()`.
+5. **Restore the previous drawing state** (`pop()`) so that other elements are unaffected.
+
+By following these steps, the camera feed appears mirrored without affecting other elements in the sketch.
+
+---
 
