@@ -37,9 +37,6 @@ function windowResized() {
 }
 ```
 
-:::info
-# Key p5.js Functions
-
 ## Canvas & Drawing
 - **`createCanvas(width, height)`**: Creates a drawing surface of the specified width and height.
 - **`background(color)`**: Sets the background color of the canvas. Can take a color name, hex code, or RGB values.
@@ -60,7 +57,6 @@ function windowResized() {
 - **`windowWidth`, `windowHeight`**: Stores the width and height of the browser window.
 - **`windowResized()`**: A built-in function that executes when the window is resized.
 - **`mouseX`, `mouseY`**: Gives the current x and y position of the mouse.
-:::
 
 ---
 
